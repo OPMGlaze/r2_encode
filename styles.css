@@ -1,0 +1,313 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #111;
+  font-family: "spaceMono", monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: visible;
+}
+
+
+
+
+g#g1 path {
+      stroke-dasharray: 7000;
+      stroke-dashoffset: 7000;
+      animation: draw 0.5s forwards ease-in-out;
+    }
+
+g#g1 path:nth-child(1) { animation-delay: 6s; }
+    g#g1 path:nth-child(2) {
+      animation: draw 30s forwards ease-in-out;
+      animation-delay: 5s; }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* non-clickable images */
+}
+
+img[alt="Recoil"] {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Target the HALOCON image inside the c-3 column, 3rd item */
+.c-3 .item:nth-child(3) img {
+  object-fit: contain;   /* fits the image inside without cropping */
+  width: 100%;           /* keep full width */
+  height: 100%;          /* keep full height */
+  transform: scale(1);
+  position: relative;
+  z-index: 11; 
+}
+
+
+
+.preview {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+  display: flex;
+  gap: 0.3em;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.preview img {
+  position: relative;
+  top: 100px;
+  width: 80px;
+  height: 50px;
+  pointer-events: none;
+}
+
+.slide-num {
+  margin: 3em 0;
+  text-align: center;
+  color: #fff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 0);
+}
+
+.slide-num p {
+  position: relative;
+  top: 30px;
+}
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 1em;
+  transform-origin: center center;
+}
+
+
+/* THIS OFFSETS the columns and items off-screen to start, so they can fly in */
+.c-1,
+.c-3,
+.c-5 {
+  top: 100%;
+  position: relative;
+}
+
+.c-1 .item,
+.c-3 .item,
+.c-5 .item {
+  top: 100%;
+  position: relative;
+}
+
+.c-2 .item,
+.c-4 .item {
+  top: -100%;
+  position: relative;
+}
+
+.container .col {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.col .item {
+  flex: 1;
+  width: 100%;
+  background: #111;
+  overflow: hidden;
+}
+
+#halocon-logo {
+  filter: none;
+}
+
+@media (max-width: 900px) {
+  .slide-num {
+    text-align: left;
+    padding-left: 2em;
+    margin-bottom: 2.5em;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .icon,
+  .icon2 {
+    padding: 0 1em;
+    font-size: 16px;
+  }
+
+  .preview img {
+    width: 60px;
+    height: 40px;
+  }
+}
+
+    @font-face {
+      font-family: 'Akira Expanded';
+      src: url('C:/Users/rkrat/OneDrive/Desktop/gallery/akira.otf') format('truetype');
+    }
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Akira Expanded', monospace;
+  font-size: 1.2rem;
+  color: white;
+  background: black;
+  border: 3px solid transparent;
+  padding: 1rem 3rem;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s, background 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+  width: 130px;    /* Fixed width wide enough for longest randomized text */
+  height: 60px;   /* Fixed height */
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+    button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      padding: 3px;
+      background: linear-gradient(45deg, orange, purple, orange);
+      background-size: 300% 300%;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      z-index: -1;
+      animation: glow 3s linear infinite;
+      filter: blur(2px);
+      opacity: 0.9;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    button:hover {
+      background: white;
+      color: black;
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.6), 0 0 40px rgba(128, 0, 128, 0.6);
+    }
+
+    button:hover::before {
+      filter: blur(16px);
+      opacity: 1;
+    }
+
+    @keyframes glow {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+.button-wrapper input {
+  font-family: 'Akira Expanded', monospace;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  background: #111;
+  color: white;
+  text-align: center;
+  outline: none;
+  width: 250px;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  border-image: linear-gradient(45deg, orange, purple) 1;
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.4), 0 0 12px rgba(128, 0, 128, 0.4);
+}
+
+.button-wrapper input::placeholder {
+  color: #aaa;
+  opacity: 0.8;
+}
+
+.button-wrapper h2 {
+  color: white;
+  font-family: 'Akira Expanded', monospace;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1em;
+  justify-content: center;
+}
+
+.button-wrapper {
+  position: absolute;     /* take out of normal flow for absolute positioning */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* perfect center */
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  z-index: 10; 
+}
+
+.button-wrapper h2,
+.button-wrapper input,
+.button-wrapper button {
+  opacity: 0;
+  transform: translateY(50px); /* start 50px lower */
+}
+
+
