@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CodeStorm</title>
+  <title>CodeSrike:Pygame</title>
   <link rel="stylesheet" href="styles.css" />
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
@@ -64,40 +64,42 @@
     <div class="box" id="questionBox">
       <div class="question-container">
         <div class="question active" data-index="0">
-Q1
-You are given a target amount N (in cents) and a set of positive integers S = {S₁, S₂, ..., Sₘ} representing coin denominations. Each denomination in S is available in infinite supply, and your task is to compute the number of distinct combinations of coins that sum exactly to N. A combination is defined as a multiset, so the order of coins does not matter—combinations that differ only in order are considered the same.
-
-For example, with N = 4 and S = {1, 2, 3}, the valid combinations are {1,1,1,1}, {1,1,2}, {2,2}, and {1,3}, totaling 4 combinations. With N = 10 and S = {2, 5, 3, 6}, there are 5 valid combinations, such as {2,2,2,2,2} and {5,5}.
-
-Design an efficient algorithm to compute the number of such unique combinations for any given N and coin set S.
-
+Welcome to Kohli’s Reverse Reflex Test. You are controlling a batsman facing a mystery bowler.
+Balls will be hurled at random speeds. Press the right key just before the ball reaches the batsman to hit it.
+Your job: Score as many hits as possible in 10 balls.
+At the end, Kohli will judge your performance, and your stats will be logged in a secret vault (MySQL database).
 </div>
         <div class="question" data-index="1">
- Q2
-Aryan is playing an adventure game where he must cross a series of magical stones arranged in a straight line. Each stone has a number indicating the maximum number of steps he can jump forward from that position. For instance, if a stone shows 3, Aryan can jump anywhere from 1 to 3 stones ahead; if it shows 0, he cannot move forward from there and is stuck. Aryan starts on the first stone and wants to reach the last stone using the minimum number of jumps possible. You are given an array arr[] of non-negative integers, where each element represents the maximum jump length from that stone. Your task is to write a Python function that returns the minimum number of jumps needed to reach the last stone from the first. If it is impossible for Aryan to reach the end, the function should return -1. The number of stones ranges from 2 to 10,000, and each stone’s value can be between 0 and 10,000. Consider how to optimize your solution to handle large inputs efficiently, and test your function with given examples.
-
-
+     GAME REQUIREMENTS:     
+1. Basic Pygame screen with main loop and background.
+2. A cricket ball moves from the right toward a batsman on the left.
+3. Player must press a key at the correct moment to “hit” the ball.
+4. +2 runs or +6 runs depending on the timing and -5 runs if not a hit
+5. A pop up appears 0.2 secs telling which key to press before ball hits the stumps
+     Keys are of your choice
+6. Track number of hits and total balls faced.
+7. Display Kohli’s judgment at the end based on your performance.
+8. Store performance in a MySQL database (see table structure below) and display the result along with highscore
+9. Asests for the code are provided and but you can also use internet to download more if required
+10.For assistance or help you can use internet but NO USAGE OF AI CHATBOTS OR AI TOOLS IF FOUND USING THEM IMMEDIATELY DISQUALIFIED
 </div>
         <div class="question" data-index="2">
-          
-Q3
-You are playing the classic "Bulls and Cows" game with a friend, where you secretly write down a number, and your friend tries to guess it. After each guess, you give them a hint based on two things: the number of bulls, which are digits that are correct in both value and position, and the number of cows, which are digits present in the secret number but in the wrong position. For example, if the secret is "1807" and the guess is "7810", then there is 1 bull ("8") and 3 cows ("7", "1", and "0"). Keep in mind that both the secret and guess may contain duplicate digits. Your task is to write a program or describe a method that compares the secret number and your friend’s guess, and returns a hint formatted as "xAyB" where x is the number of bulls and y is the number of cows.
-</div>
+TABLE STRUCTURE
+Table Name: kohli_reflex_stats
+sql
+CREATE TABLE kohli_reflex_stats (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player_name VARCHAR(255),
+    hits INT,
+    balls_played INT,
+    kohli_judgment VARCHAR(255),
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+        </div>
         <div class="question" data-index="3">
-   Q4
-In a smart city, temperature sensors are installed across different zones to monitor environmental conditions in real time. These sensors continuously send temperature readings to a central system. To detect sudden spikes—such as those caused by equipment overheating or unusual weather patterns—the system processes recent data using a sliding window of fixed size k. This approach ensures that only the most recent readings are used when analyzing trends and triggering alerts.
-
-Given a list of temperature readings nums, ordered by time, and an integer k representing the size of the sliding window, your task is to compute the maximum temperature reading within each window as it moves one step at a time from left to right across the list. The result should be a list of maximum values—one for each window position.
 
 </div>
-        <div class="question" data-index="4">
-    Q5   A decoration consists of n bulbs connected by n - 1 wires, forming a tree structure.
-          Each bulb has an initial color. The beauty of the decoration is defined as the number of wires that connect two bulbs of the same color.
-          You are given the initial colors of the bulbs and how each bulb (from the second to the nth) is connected to one of the previously added bulbs.
-          There are m repaint operations.
-          Each operation changes the color of one bulb. After each repaint, you need to calculate and print the updated beauty of the decoration.
-
-</div>
+        
       </div>
       <button class="nav-button prev-button" disabled>
         <svg width="60px" height="60px" viewBox="0 0 60 60" class="border">
