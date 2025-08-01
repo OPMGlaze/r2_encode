@@ -1,0 +1,380 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-container .question[data-index="4"].active ~ .box {
+  width: 1200px;
+  max-width: 1200px;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #111;
+  font-family: "spaceMono", monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg#svg1 {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: visible;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0 0 30px 0;
+  opacity: 0;
+  color: white;
+  text-align: center;
+}
+
+.box {
+  width: 85vw;
+  max-width: 1000px;
+  min-height: 300px;
+  padding: 50px;
+  border: 4px solid;
+  border-radius: 0;
+  background: rgba(17, 17, 17, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-image: linear-gradient(90deg, orange, purple) 1;
+  box-shadow: 0 0 20px 4px rgba(255, 128, 0, 0.6), 0 0 20px 4px rgba(128, 0, 128, 0.6);
+  opacity: 0;
+  position: relative;
+  z-index: 100;
+  color: white;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.5s ease-in-out;
+}
+
+.question-container {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.question {
+  display: none;
+  margin: 20px 0;
+  overflow: auto;
+  max-height: 100%;
+}
+
+.question.active {
+  display: block;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position 1s ease-in-out;
+}
+
+.nav-button svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: url(#gradient-purple-orange);
+  stroke-width: 2;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: stroke-dashoffset 1s ease-in-out;
+  filter: url(#glow);
+}
+
+.nav-button:hover {
+  background: linear-gradient(90deg, #a100ff, #ff6a00);
+  background-position: 0% 0;
+}
+
+.nav-button:hover svg .hl-line {
+  stroke-dashoffset: -480;
+}
+
+.nav-button ion-icon {
+  font-size: 24px;
+  color: white;
+  z-index: 1;
+}
+
+.nav-button:hover ion-icon {
+  animation: livelyArrow 0.6s ease-in-out;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-button:disabled svg .hl-line {
+  stroke-dashoffset: 150;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
+.nav-button.btn-animated {
+  animation: moveInBottom 1.4s ease-out;
+  animation-fill-mode: backwards;
+  animation-delay: 6s;
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes livelyArrow {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(8deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+g#g1 path {
+  stroke-dasharray: 7000;
+  stroke-dashoffset: 7000;
+  animation: draw 0.5s forwards ease-in-out;
+}
+
+g#g1 path:nth-child(1) {
+  animation-delay: 6s;
+}
+
+g#g1 path:nth-child(2) {
+  animation: draw 30s forwards ease-in-out;
+  animation-delay: 5s;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+img[alt="Recoil"] {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.c-3 .item:nth-child(3) img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  position: relative;
+  z-index: 11;
+}
+
+.preview {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+  display: flex;
+  gap: 0.3em;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.preview img {
+  position: relative;
+  top: 100px;
+  width: 80px;
+  height: 50px;
+  pointer-events: none;
+}
+
+.slide-num {
+  margin: 3em 0;
+  text-align: center;
+  color: #fff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 0);
+}
+
+.slide-num p {
+  position: relative;
+  top: 30px;
+}
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 1em;
+  transform-origin: center center;
+  z-index: 5;
+}
+
+.c-1,
+.c-3,
+.c-5 {
+  top: 100%;
+  position: relative;
+}
+
+.c-1 .item,
+.c-3 .item,
+.c-5 .item {
+  top: 100%;
+  position: relative;
+}
+
+.c-2 .item,
+.c-4 .item {
+  top: -100%;
+  position: relative;
+}
+
+.container .col {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.col .item {
+  flex: 1;
+  width: 100%;
+  background: #111;
+  overflow: hidden;
+}
+
+#halocon-logo {
+  filter: none;
+}
+
+@media (max-width: 900px) {
+  .slide-num {
+    text-align: left;
+    padding-left: 2em;
+    margin-bottom: 2.5em;
+  }
+
+  .title {
+    font-size: 30px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .icon,
+  .icon2 {
+    padding: 0 1em;
+    font-size: 16px;
+  }
+
+  .preview img {
+    width: 60px;
+    height: 40px;
+  }
+
+  .nav-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nav-button svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nav-button ion-icon {
+    font-size: 20px;
+  }
+
+  .box {
+    width: 90vw;
+    max-width: 600px;
+    padding: 30px;
+    min-height: 250px;
+  }
+}
+
+@font-face {
+  font-family: 'Akira Expanded';
+  src: url('fonts/akira.otf') format('truetype');
+}
+
+@keyframes glow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
